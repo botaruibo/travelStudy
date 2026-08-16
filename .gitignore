@@ -1,44 +1,41 @@
-# Workspace-only folders outside the Electron project
-/.pnpm-store/
-/assets/
-/deliverables/
-/tmp/
-/ux-demo/
-/renderer/
+node_modules/
+renderer/node_modules/
+renderer/dist/
+dist/
+.vite/
+.cache/
+.tmp/
+logs/
+runtime/
+data/
+.DS_Store
+Thumbs.db
+*.log
 
-# Generated and local-only files inside the Electron project
-travel-study-electron/node_modules/
-travel-study-electron/renderer/node_modules/
-travel-study-electron/renderer/dist/
-travel-study-electron/dist/
-travel-study-electron/.vite/
-travel-study-electron/.cache/
-travel-study-electron/.tmp/
-travel-study-electron/logs/
-travel-study-electron/runtime/
-travel-study-electron/data/
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*
+*secret*
 
-# Secrets and local configuration
-travel-study-electron/.env
-travel-study-electron/.env.*
-!travel-study-electron/.env.example
-travel-study-electron/*.pem
-travel-study-electron/*.key
-travel-study-electron/*credentials*
-travel-study-electron/*secret*
+# Original media and generated database files
+**/*.mp4
+**/*.mov
+**/*.m4v
+**/*.avi
+**/*.mkv
+**/*.webm
+**/*.wav
+**/*.mp3
+**/*.m4a
+**/*.sqlite
+**/*.sqlite3
+**/*.db
 
-# Large source media and generated artifacts
-travel-study-electron/**/*.mp4
-travel-study-electron/**/*.mov
-travel-study-electron/**/*.m4v
-travel-study-electron/**/*.avi
-travel-study-electron/**/*.mkv
-travel-study-electron/**/*.webm
-travel-study-electron/**/*.wav
-travel-study-electron/**/*.mp3
-travel-study-electron/**/*.m4a
-travel-study-electron/**/*.sqlite
-travel-study-electron/**/*.sqlite3
-travel-study-electron/**/*.db
-travel-study-electron/**/*.log
-travel-study-electron/renderer/public/*.png
+# Keep the optimized web assets; ignore the large source PNG copies
+renderer/public/*.png
+
+.pnpm-store/
