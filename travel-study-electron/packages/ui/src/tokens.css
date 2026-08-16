@@ -1,0 +1,16 @@
+:root,
+[data-theme="default"] {
+  --ts-color-brand-900: #1e3a5f;
+  --ts-color-brand-700: #2d5a4a;
+  --ts-color-action-500: #e8913a;
+  --ts-color-accent-500: #5b9a8b;
+  --ts-color-accent-warm: #b85450;
+  --ts-color-surface-0: #ffffff;
+  --ts-color-surface-1: #f5f5f0;
+  --ts-color-text-strong: #1f2937;
+  --ts-color-text-muted: #6b7280;
+  --ts-color-border: #d9dfdc;
+  --ts-color-focus: rgb(91 154 139 / 32%);
+  --ts-radius-control: 8px;
+  --ts-radius-panel: 12px;
+}

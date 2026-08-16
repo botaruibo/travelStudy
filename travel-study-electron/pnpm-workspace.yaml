@@ -1,0 +1,7 @@
+packages:
+  - renderer
+  - packages/*
+
+allowBuilds:
+  electron: true
+  ffmpeg-static: true
