@@ -56,8 +56,8 @@ export const scenes = [
 ];
 
 export const clipRows = [
-  { id: "clip-1", name: "植物园上午场.pdf", source: "植物园研学_上午.mp4", date: "2026-08-15", location: "上海植物园", pages: 8 },
-  { id: "clip-2", name: "昆虫观察.pdf", source: "植物园研学_下午.mp4", date: "2026-08-15", location: "上海植物园", pages: 6 },
+  { id: "clip-1", name: "植物园上午场.pdf", source: "植物园游学_上午.mp4", date: "2026-08-15", location: "上海植物园", pages: 8 },
+  { id: "clip-2", name: "昆虫观察.pdf", source: "植物园游学_下午.mp4", date: "2026-08-15", location: "上海植物园", pages: 6 },
   { id: "clip-3", name: "动物保护教育.pdf", source: "动物园导览.mp4", date: "2026-08-16", location: "上海动物园", pages: 10 },
   { id: "clip-4", name: "城市博物馆.pdf", source: "博物馆讲解.mov", date: "2026-08-18", location: "上海博物馆", pages: 7 },
 ];

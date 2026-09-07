@@ -2,7 +2,7 @@
   "name": "@travel-study/ui",
   "version": "0.1.0",
   "private": true,
-  "description": "游学纪跨端设计令牌与通用 UI 包边界（桌面端 MVP）",
+  "description": "研学笔记跨端设计令牌与通用 UI 包边界",
   "type": "module",
   "exports": {
     "./tokens.css": "./src/tokens.css"

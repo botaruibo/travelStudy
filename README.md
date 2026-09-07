@@ -1,4 +1,4 @@
-# 游学纪 · Electron
+# 研学笔记 · Electron
 
 面向中小学研学内容生产的 Electron 桌面应用 MVP。应用将视频导入、场景/关键帧筛选、语音转写、模板编辑和游学片段生成整合到一个桌面工作台中，并为后续的游学管理、游学笔记合并和移动端采集预留扩展空间。
 
@@ -64,6 +64,28 @@ FFmpeg 默认由 `@ffmpeg-installer/ffmpeg` 提供；如需指定系统安装版
 npm run build:renderer
 npm start
 ```
+
+## 兑换码签名密钥
+
+兑换码使用 Ed25519 私钥签名，应用仅内置公钥
+`electron/config/redeem-public-key.pem`。私钥必须保存在应用包和版本库之外。
+
+开发环境初始化一组密钥：
+
+```bash
+npm run credits:keypair -- \
+  --private-out .runtime/dev-keys/redeem-private-key.pem \
+  --public-out electron/config/redeem-public-key.pem
+```
+
+生成 20 积分兑换码：
+
+```bash
+TRAVEL_STUDY_REDEEM_PRIVATE_KEY=.runtime/dev-keys/redeem-private-key.pem \
+npm run credits:generate -- --credits 20
+```
+
+更新公钥后需要重启 Electron。旧 `RC1` 对称加密兑换码不再支持。
 
 ## 文档入口
 

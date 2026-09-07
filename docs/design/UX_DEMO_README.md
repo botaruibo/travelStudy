@@ -1,4 +1,4 @@
-# 游学纪 React UX Demo
+# 研学笔记 React UX
 
 这是桌面端 MVP 的可交互 H5 Demo，不包含真实的视频压缩、场景检测、ASR 或 PDF 服务。
 

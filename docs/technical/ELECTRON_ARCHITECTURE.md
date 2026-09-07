@@ -1,6 +1,6 @@
 # Electron 应用技术设计方案 v1.1
 
-> 本方案基于 Electron 官方进程模型、安全和 IPC 文档整理，服务于“游学纪”桌面端 MVP。当前只定义边界与可演进结构，不实现云端接口、真实媒体分析或远程同步。
+> 本方案基于 Electron 官方进程模型、安全和 IPC 文档整理，服务于“研学笔记”桌面端。当前只定义边界与可演进结构，不实现云端接口、真实媒体分析或远程同步。
 
 ## 1. 设计目标
 
@@ -102,11 +102,11 @@ IPC 应使用 `contextBridge` 暴露一组最小化、语义化的方法，例�
 │     │  ├─ proxy/                 # 压缩代理视频
 │     │  ├─ frames/                # 关键帧
 │     │  └─ audio/                 # 从视频切出的音频
-│     ├─ analysis/
+│     ├─ media/
 │     │  ├─ scenes.json            # 场景分割结果
 │     │  ├─ keyframes.json         # 关键帧元数据
 │     │  └─ transcripts.json       # ASR 结果与置信度
-│     └─ outputs/
+│     └─ pdf-notes/
 │        ├─ fragments/             # 游学片段 PDF
 │        └─ notes/                 # 游学笔记 PDF
 └─ .travel-study/

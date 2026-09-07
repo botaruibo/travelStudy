@@ -1,0 +1,103 @@
+html {
+  background: var(--corp-neutral-100);
+}
+
+body {
+  color: var(--corp-neutral-900);
+  background: var(--corp-neutral-100);
+  font-family: var(--corp-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.brand {
+  font-family: var(--corp-font-display);
+}
+
+button,
+input,
+textarea,
+select {
+  letter-spacing: 0;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--corp-primary-500);
+  outline-offset: 2px;
+  box-shadow: var(--corp-focus);
+}
+
+::selection {
+  color: var(--corp-neutral-900);
+  background: var(--corp-primary-200);
+}
+
+.page {
+  width: min(100%, 1600px);
+  margin-inline: auto;
+  padding: var(--corp-space-8) var(--corp-space-10) var(--corp-space-12);
+}
+
+.app-main-content,
+.app-page-outlet {
+  min-height: 100%;
+}
+
+.page-loading-state {
+  min-height: 320px;
+  padding: var(--corp-space-8);
+  display: grid;
+  place-items: center;
+  color: var(--corp-neutral-500);
+  font-size: 14px;
+}
+
+.page-heading,
+.workflow-heading {
+  color: var(--corp-neutral-900);
+}
+
+.page-heading h1,
+.workflow-heading h1 {
+  margin: var(--corp-space-1) 0 var(--corp-space-2);
+  font-family: var(--corp-font-display);
+  font-size: 28px;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.page-heading p,
+.workflow-heading p {
+  color: var(--corp-neutral-500);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.section-kicker,
+.inspector-label {
+  color: var(--corp-primary-700);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

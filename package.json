@@ -2,18 +2,28 @@
   "name": "travel-study-electron",
   "version": "0.1.0",
   "private": true,
-  "description": "游学纪：面向中小学研学内容生产的 Electron 桌面应用 MVP。",
+  "description": "研学笔记：面向中小学研学内容生产的 Electron 桌面应用。",
   "main": "electron/main.cjs",
   "license": "MIT",
   "type": "commonjs",
   "packageManager": "pnpm@10.4.1",
   "scripts": {
     "dev": "concurrently -k \"npm run dev:renderer\" \"npm run dev:electron\"",
+    "app": "node scripts/travel-study.cjs",
     "dev:renderer": "npm --prefix renderer run dev -- --port 5173",
     "dev:electron": "wait-on http://127.0.0.1:5173 && cross-env ELECTRON_RENDERER_URL=http://127.0.0.1:5173 electron .",
     "build:renderer": "npm --prefix renderer run build",
+    "build:installers": "node deploy/build-installers.cjs",
+    "build:installers:mac": "node deploy/build-installers.cjs --mac",
+    "build:installers:win": "node deploy/build-installers.cjs --win",
+    "migrate:storage": "node scripts/migrate-storage-layout.cjs",
+    "prepare:initial-data": "node scripts/prepare-initial-data.cjs",
+    "verify:installer:mac": "node deploy/verify-macos-installer.cjs",
+    "credits:keypair": "node scripts/generate-redeem-keypair.cjs",
+    "credits:generate": "node scripts/generate-redeem-code.cjs",
     "start": "npm run build:renderer && electron .",
-    "lint": "npm --prefix renderer exec vite -- --version"
+    "lint": "npm --prefix renderer exec vite -- --version",
+    "test:subtitles": "node --test test/subtitle-normalize.test.cjs"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -27,6 +37,7 @@
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "electron": "^36.4.0",
+    "electron-builder": "^26.15.3",
     "wait-on": "^8.0.3"
   }
 }

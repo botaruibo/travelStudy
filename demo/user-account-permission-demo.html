@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>研学笔记 - 用户与权限 Demo</title>
+<style>
+:root{--ivory:#faf9f5;--ink:#141413;--clay:#d97757;--oat:#e3dacc;--olive:#788c5d;--line:#d1cfc5;--muted:#87867f;--dark:#10192d;--dark-2:#1c2945;--blue:#2563eb;--white:#fff;--serif:ui-serif,Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI",sans-serif;--mono:ui-monospace,"SF Mono",Menlo,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--ivory);color:var(--ink);font:14px/1.5 var(--sans)}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1340px;margin:auto;padding:38px 24px 56px}.eyebrow{font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}h1{font-size:32px;margin:5px 0}h2{font-size:23px;margin:0}p{margin:0}.lead{max-width:690px;color:var(--muted)}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:26px 0 14px;padding:14px 16px;background:var(--white);border:1.5px solid var(--line);border-radius:12px}.role-switch{display:flex;gap:5px;padding:4px;background:#f0eee6;border-radius:8px}.role-switch button{border:0;border-radius:5px;padding:7px 10px;background:transparent;color:#3d3d3a}.role-switch button.active{background:var(--white);box-shadow:0 1px 3px #0001;font-weight:700}.export{border:1px solid var(--ink);border-radius:7px;background:var(--white);padding:8px 11px;color:var(--ink)}.app{height:730px;display:grid;grid-template-columns:268px 1fr;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:#f6f7fa;box-shadow:0 12px 30px #14141312}.sidebar{display:flex;flex-direction:column;padding:20px 12px;background:var(--dark);color:#dfe7f6}.brand{display:flex;align-items:center;gap:10px;padding:0 10px 22px;font-weight:750;font-size:18px;color:white}.mark{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:#2563eb}.nav-label{padding:10px;color:#9fafc7;font-size:11px;letter-spacing:.08em}.nav{display:grid;gap:3px}.nav button{display:flex;align-items:center;gap:10px;border:0;border-radius:7px;padding:10px;color:#cdd7ea;background:transparent;text-align:left}.nav button:hover,.nav button.active{background:#253452;color:white}.nav button.locked{display:none}.nav .indent{margin-left:14px;font-size:13px}.status{display:flex;align-items:center;gap:9px;margin-top:auto;padding:14px 10px 0;border-top:1px solid #293754;color:#aab8d0}.dot{width:9px;height:9px;border-radius:50%;background:#34d399;box-shadow:0 0 0 5px #34d39922}.avatar-button{position:relative;display:flex;justify-content:center;margin:14px 0 2px;padding-top:14px;border-top:1px solid #293754}.avatar{width:36px;height:36px;border:0;border-radius:50%;background:linear-gradient(135deg,#f4c1a6,#d97757);color:white;font-weight:750;box-shadow:0 0 0 2px #8897b022}.avatar:hover{box-shadow:0 0 0 3px #60a5fa}.account-menu{position:absolute;z-index:8;bottom:54px;left:0;width:244px;padding:8px;background:var(--white);border:1px solid #ccd4e3;border-radius:9px;box-shadow:0 12px 26px #0004;color:var(--ink);display:none}.account-menu.open{display:block}.user-line{display:flex;gap:10px;align-items:center;padding:9px}.user-line .avatar{width:34px;height:34px;display:grid;place-items:center}.user-line b{display:block}.user-line small{color:#64748b}.menu-stats{display:grid;grid-template-columns:1fr 1fr;margin:5px 0;border-top:1px solid #edf0f5;border-bottom:1px solid #edf0f5}.menu-stats div{padding:9px;font-size:11px;color:#64748b}.menu-stats strong{display:block;font-size:15px;color:var(--ink)}.account-menu button{width:100%;padding:9px;border:0;border-radius:5px;background:transparent;text-align:left;color:var(--ink)}.account-menu button:hover{background:#f0f4ff}.account-menu .recharge{color:var(--blue);font-weight:700}.main{padding:34px 38px;overflow:auto}.page-head{display:flex;justify-content:space-between;align-items:start;gap:20px;padding-bottom:23px;border-bottom:1px solid #dce2ec}.page-head p{color:#64748b;margin-top:4px}.page-tag{font:11px var(--mono);color:#2563eb;letter-spacing:.08em}.card{margin-top:24px;padding:22px;background:white;border:1px solid #d9e0eb;border-radius:8px}.card h3{font-size:18px;margin:0 0 4px}.card .sub{color:#64748b}.balance{display:flex;justify-content:space-between;align-items:center}.balance strong{font:30px var(--serif);color:#2563eb}.row{display:flex;gap:14px;align-items:end;margin-top:19px}.field{display:grid;gap:7px;flex:1;font-size:12px;font-weight:700}.field input{height:40px;border:1px solid #cbd5e1;border-radius:6px;padding:0 11px}.primary{display:inline-flex;justify-content:center;align-items:center;min-height:40px;border:0;border-radius:6px;padding:0 14px;background:var(--blue);color:white;font-weight:700}.ghost{border:1px solid #cbd5e1;border-radius:6px;padding:8px 12px;background:white;color:#334155}.hidden{display:none!important}.qr-layout{display:grid;grid-template-columns:190px 1fr;gap:30px;align-items:center}.qr{width:170px;height:170px;padding:12px;background:#fff;border:1px solid #d1cfc5;border-radius:7px;display:grid;grid-template-columns:repeat(17,1fr);grid-template-rows:repeat(17,1fr);gap:1px}.qr i{background:#141413}.qr i.empty{background:transparent}.notice{padding:14px;border-left:3px solid var(--clay);background:#fff7f4;color:#5c2c1e}.profile{display:grid;grid-template-columns:115px 1fr;gap:28px;align-items:start}.profile-avatar{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f4c1a6,#d97757);color:white;font-size:34px;font-weight:700}.file-button{margin-top:9px;display:block;font-size:12px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.permissions{width:100%;margin-top:15px;border-collapse:collapse}.permissions th,.permissions td{padding:11px;text-align:left;border-bottom:1px solid #e8ebef}.permissions th{font-size:12px;color:#64748b}.badge{display:inline-block;padding:3px 7px;border-radius:99px;background:#e7f8ef;color:#12713d;font-size:11px;font-weight:700}.check{width:16px;height:16px;accent-color:#2563eb}.empty{padding:35px;color:#64748b;text-align:center}@media(max-width:760px){.wrap{padding:24px 12px}.app{grid-template-columns:1fr;height:auto}.sidebar{min-height:190px}.main{padding:24px 18px}.nav{grid-template-columns:repeat(2,1fr)}.status{display:none}.avatar-button{position:absolute;right:18px;top:5px;border:0}.account-menu{left:auto;right:0}.qr-layout,.profile,.form-grid{grid-template-columns:1fr}.toolbar{align-items:start;flex-direction:column}}
+</style>
+<style>
+.recharge-modal{position:fixed;z-index:20;inset:0;display:grid;place-items:center;padding:24px;background:rgba(16,25,45,.58)}
+.recharge-modal-card{position:relative;width:min(420px,100%);padding:34px;background:var(--white);border:1.5px solid var(--line);border-radius:12px;text-align:center;box-shadow:0 24px 60px #0005}
+.recharge-modal-card h2{margin:16px 0 8px}.recharge-modal-card p{color:#64748b}.recharge-modal-card .instruction{margin-top:18px;padding-top:16px;border-top:1px solid #e5e7eb;font-weight:700;color:#3d3d3a}
+.recharge-modal svg.qr{display:block;width:194px;height:194px;margin:auto;padding:0;overflow:hidden;background:#fff}
+.recharge-modal-close{position:absolute;top:12px;right:12px;width:32px;height:32px;padding:0;border:0;border-radius:6px;background:transparent;color:#64748b;font-size:25px;line-height:1}.recharge-modal-close:hover{background:#f0eee6;color:#141413}.recharge-modal-close:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.sidebar-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding:14px 10px 0;border-top:1px solid #293754}
+.sidebar-footer .status{margin:0;padding:0;border:0;white-space:nowrap}
+.sidebar-footer .avatar-button{margin:0;padding:0;border:0}
+.sidebar-footer .account-menu{left:auto;right:0}
+.menu-stats .update-state{display:block;margin-top:3px;font-size:11px;font-weight:500;color:#87867f}.menu-stats .update-state.has-update{color:#c2410c}
+.account-menu .logout{margin-top:5px;border-top:1px solid #edf0f5;color:#b42318}.account-menu .logout:hover{background:#fff1f0;color:#b42318}
+.login-page{position:fixed;z-index:40;inset:0;display:grid;place-items:center;padding:24px;background:#faf9f5}.login-panel{width:min(390px,100%);padding:36px;background:#fff;border:1.5px solid #d1cfc5;border-radius:12px;box-shadow:0 18px 45px #14141312}.login-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:10px;background:#2563eb;color:#fff;font-size:22px}.login-panel h2{margin:18px 0 5px;font-size:26px}.login-panel .login-sub{color:#87867f;margin-bottom:24px}.login-form{display:grid;gap:16px}.login-form label{display:grid;gap:7px;font-size:13px;font-weight:700}.login-form input[type="text"],.login-form input[type="password"]{height:42px;padding:0 11px;border:1px solid #cbd5e1;border-radius:6px;color:#141413}.save-password{display:flex!important;align-items:center;gap:8px;color:#3d3d3a;font-weight:500!important}.save-password input{width:16px;height:16px;accent-color:#2563eb}.login-hint{margin:0;color:#87867f;font-size:12px}.login-error{min-height:18px;margin:0;color:#b42318;font-size:12px}.login-form .primary{width:100%}
+</style>
+</head>
+<body>
+<section class="login-page" id="loginPage" aria-label="用户登录">
+  <form class="login-panel" id="loginForm">
+    <div class="login-mark">✦</div>
+    <h2>登录研学笔记</h2>
+    <p class="login-sub">使用本地账号进入学习素材与笔记。</p>
+    <div class="login-form">
+      <label>用户名<input id="loginUsername" type="text" value="超级奶妈" autocomplete="username"></label>
+      <label>密码<input id="loginPassword" type="password" autocomplete="current-password" placeholder="请输入密码"></label>
+      <p class="login-hint">首次登录默认密码：cjnmixx</p>
+      <label class="save-password"><input id="savePassword" type="checkbox">保存密码</label>
+      <p class="login-error" id="loginError" role="alert"></p>
+      <button class="primary" type="submit">登录</button>
+    </div>
+  </form>
+</section>
+<main class="wrap">
+  <div class="eyebrow">研学笔记 / 交互设计 Demo</div>
+  <h1>用户、积分与权限管理</h1>
+  <p class="lead">独立的交互原型。点击侧栏底部头像查看登录状态，选择角色预览权限差异；当前仅用于确认信息架构和交互，不接入数据库。</p>
+  <div class="toolbar">
+    <div><b>预览角色</b> <span style="color:#87867f">切换后菜单按资源权限即时更新</span></div>
+    <div style="display:flex;gap:12px;align-items:center"><div class="role-switch"><button data-role="user" class="active">超级奶妈</button><button data-role="admin">admin</button></div><button class="export" id="export">导出设计说明</button></div>
+  </div>
+  <section class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="mark">✦</span>研学笔记</div>
+      <div class="nav">
+        <button data-page="workbench">▣ 工作台</button>
+        <button data-page="tour">▤ 研学笔记</button>
+        <button class="indent" data-page="materials">▣ 素材管理</button>
+        <button class="indent" data-page="notes">▱ 笔记本</button>
+        <button data-page="config">⚙ 系统配置</button>
+        <button class="indent admin-only" data-page="application">⌘ 应用配置</button>
+        <button class="indent admin-only" data-page="model">◉ AI 模型配置</button>
+        <button class="indent" data-page="profile">◉ 个人信息</button>
+        <button class="indent admin-only" data-page="templates">▤ 笔记模板</button>
+        <button class="indent admin-only" data-page="permissions">♙ 权限管理</button>
+        <button data-page="credits">◇ 积分管理</button>
+      </div>
+      <div class="sidebar-footer">
+        <div class="status"><span class="dot"></span>本地素材库已连接</div>
+        <div class="avatar-button">
+          <button class="avatar" id="avatar" aria-label="打开用户菜单">奶</button>
+          <div class="account-menu" id="accountMenu">
+            <div class="user-line"><span class="avatar" id="menuAvatar">奶</span><span><b id="menuName">超级奶妈</b><small id="loginStatus">已登录</small></span></div>
+            <div class="menu-stats"><div>剩余积分<strong>2,000.0</strong></div><div>软件更新<small id="updateState" class="update-state">已是最新</small></div></div>
+            <button data-page="profile">个人信息</button><button data-page="credits">积分管理</button><button class="recharge" data-page="recharge">积分兑换</button>
+            <button class="logout" id="logoutButton" type="button">退出登录</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <section class="main">
+      <div id="creditsPage" class="page">
+        <header class="page-head"><div><div class="page-tag">CREDIT ACCOUNT</div><h2>积分管理</h2><p>兑换记录和 AI 分析扣减均保存在当前设备。</p></div><strong style="font-size:23px;color:#2563eb">500.0 积分</strong></header>
+        <div class="card"><div class="balance"><div><h3>当前积分</h3><p class="sub">初始赠送 500.0 积分 · 最近更新 今天</p></div><strong>500.0</strong></div><div class="row"><label class="field"><span>兑换码</span><input placeholder="请输入 RC1 兑换码"></label><button class="primary">兑换</button></div></div>
+        <div class="card"><h3>积分流水</h3><p class="sub">兑换码仅在当前本地数据库内防重复使用。</p><div class="empty">暂无积分流水</div></div>
+      </div>
+      <div id="profilePage" class="page hidden">
+        <header class="page-head"><div><div class="page-tag">PERSONAL PROFILE</div><h2>个人信息</h2><p>管理账号显示信息与登录凭据。</p></div></header>
+        <div class="card profile"><div><div class="profile-avatar" id="profileAvatar">奶</div><button class="ghost file-button" onclick="document.getElementById('avatarFile').click()">选择本地头像</button><input id="avatarFile" type="file" accept="image/*" hidden></div><div class="form-grid"><label class="field">用户名<input id="username" value="超级奶妈"></label><label class="field">新密码<input type="password" placeholder="输入新密码"></label><label class="field">确认新密码<input type="password" placeholder="再次输入新密码"></label><div style="align-self:end"><button class="primary">保存个人信息</button></div></div></div>
+        <div class="notice" style="margin-top:18px">密码仅以安全哈希值存储，页面及数据库均不保存可逆明文。</div>
+      </div>
+      <div id="permissionsPage" class="page hidden">
+        <header class="page-head"><div><div class="page-tag">ADMIN ONLY</div><h2>权限管理</h2><p>为用户配置可见菜单和可执行功能。该页面仅 admin 可见。</p></div><select id="permissionUser"><option>超级奶妈</option><option>admin</option></select></header>
+        <div class="card"><h3>资源授权</h3><p class="sub">资源表覆盖所有菜单 ID 与功能 ID；保存后，用户下次启动应用时按授权资源渲染菜单与按钮。</p><table class="permissions"><thead><tr><th>资源</th><th>资源 ID</th><th>类型</th><th>授权</th></tr></thead><tbody id="permissionRows"></tbody></table><div style="margin-top:16px"><button class="primary">保存权限</button></div></div>
+      </div>
+      <div id="placeholderPage" class="page hidden"><header class="page-head"><div><div class="page-tag">RESOURCE PREVIEW</div><h2 id="placeholderTitle">页面预览</h2><p>此菜单在正式实现中将由资源 ID 控制显隐。</p></div></header><div class="card empty">该页面作为权限渲染示意保留在 Demo 中。</div></div>
+    </section>
+  </section>
+</main>
+<div class="recharge-modal hidden" id="rechargeModal" role="dialog" aria-modal="true" aria-label="积分兑换">
+  <div class="recharge-modal-card">
+    <button class="recharge-modal-close" id="closeRechargeModal" type="button" aria-label="关闭积分兑换">×</button>
+    <svg class="qr" id="qr" viewBox="0 0 170 170" role="img" aria-label="微信二维码示意"></svg>
+    <h2>积分兑换</h2>
+    <p>扫描微信二维码联系作者，获取积分兑换码。</p>
+    <p class="instruction">请联系作者获取兑换码</p>
+  </div>
+</div>
+<script>
+const state={role:'user',page:'credits'};
+const pages=['credits','profile','permissions','placeholder'];
+const pageTitles={workbench:'工作台',tour:'研学笔记',materials:'素材管理',notes:'笔记本',config:'系统配置',application:'应用配置',model:'AI 模型配置',templates:'笔记模板'};
+const resources=[['工作台','menu.workbench','菜单',true],['研学笔记','menu.tour','菜单',true],['素材管理','menu.materials','菜单',true],['笔记本','menu.notes','菜单',true],['系统配置','menu.system-config','菜单',true],['个人信息','menu.profile','菜单',true],['积分管理','menu.credits','菜单',true],['应用配置','menu.application','菜单',false],['AI 模型配置','menu.ai-model','菜单',false],['笔记模板','menu.templates','菜单',false],['权限管理','menu.permissions','菜单',false],['保存配置','action.config.save','功能',false],['兑换积分码','action.credits.redeem','功能',true]];
+function applyRole(){const admin=state.role==='admin';document.querySelectorAll('.admin-only').forEach(el=>el.classList.toggle('locked',!admin));document.querySelectorAll('[data-role]').forEach(b=>b.classList.toggle('active',b.dataset.role===state.role));const name=admin?'admin':'超级奶妈';const char=admin?'A':'奶';const updateState=document.getElementById('updateState');document.getElementById('avatar').textContent=char;document.getElementById('menuAvatar').textContent=char;document.getElementById('profileAvatar').textContent=char;document.getElementById('menuName').textContent=name;document.getElementById('username').value=name;updateState.textContent=admin?'发现新版本':'已是最新';updateState.classList.toggle('has-update',admin);renderPermissions();}
+function show(page){if(page==='recharge'){document.getElementById('accountMenu').classList.remove('open');document.getElementById('rechargeModal').classList.remove('hidden');return}if(page==='permissions'&&state.role!=='admin')return;state.page=page;document.getElementById('accountMenu').classList.remove('open');pages.forEach(x=>document.getElementById(x+'Page').classList.add('hidden'));let target=page;if(!pages.includes(page)){target='placeholder';document.getElementById('placeholderTitle').textContent=pageTitles[page]||page;}document.getElementById(target+'Page').classList.remove('hidden');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));}
+function renderPermissions(){const selected=document.getElementById('permissionUser')?.value||'超级奶妈';const isAdmin=selected==='admin';const rows=resources.map(([n,id,type,normal])=>`<tr><td>${n}</td><td><code>${id}</code></td><td>${type}</td><td><input class="check" type="checkbox" ${isAdmin||normal?'checked':''}></td></tr>`).join('');document.getElementById('permissionRows').innerHTML=rows;}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.page)));
+document.querySelectorAll('[data-role]').forEach(b=>b.addEventListener('click',()=>{state.role=b.dataset.role;applyRole();if(state.page==='permissions'&&! (state.role==='admin'))show('credits')}));
+document.getElementById('avatar').addEventListener('click',e=>{e.stopPropagation();document.getElementById('accountMenu').classList.toggle('open')});document.addEventListener('click',()=>document.getElementById('accountMenu').classList.remove('open'));
+document.getElementById('accountMenu').addEventListener('click',e=>e.stopPropagation());document.getElementById('permissionUser').addEventListener('change',renderPermissions);
+function showLogin(){document.getElementById('loginStatus').textContent='已退出登录';document.getElementById('accountMenu').classList.remove('open');document.getElementById('rechargeModal').classList.add('hidden');document.getElementById('loginPage').classList.remove('hidden');}
+document.getElementById('logoutButton').addEventListener('click',showLogin);
+function closeRechargeModal(){document.getElementById('rechargeModal').classList.add('hidden');}
+document.getElementById('closeRechargeModal').addEventListener('click',closeRechargeModal);
+document.addEventListener('keydown',event=>{if(event.key==='Escape')closeRechargeModal()});
+const savedPassword=localStorage.getItem('studyTourDemo.savedPassword');if(savedPassword){document.getElementById('loginPassword').value=savedPassword;document.getElementById('savePassword').checked=true;}
+document.getElementById('loginForm').addEventListener('submit',event=>{event.preventDefault();const username=document.getElementById('loginUsername').value.trim();const password=document.getElementById('loginPassword').value;const savePassword=document.getElementById('savePassword').checked;const error=document.getElementById('loginError');const valid=(username==='超级奶妈'&&password==='cjnmixx')||(username==='admin'&&password==='cjnbixx');if(!valid){error.textContent='用户名或密码不正确';return}if(savePassword)localStorage.setItem('studyTourDemo.savedPassword',password);else localStorage.removeItem('studyTourDemo.savedPassword');state.role=username==='admin'?'admin':'user';applyRole();error.textContent='';document.getElementById('loginStatus').textContent='已登录';document.getElementById('loginPage').classList.add('hidden');});
+document.getElementById('avatarFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{document.getElementById('profileAvatar').style.backgroundImage=`url(${reader.result})`;document.getElementById('profileAvatar').textContent=''};reader.readAsDataURL(f)});
+document.getElementById('export').addEventListener('click',()=>{const text=`用户与权限设计确认项\\n- 默认侧栏仅显示登录用户头像，点击打开状态卡片。\\n- 积分兑换弹窗展示微信二维码和“请联系作者获取兑换码”。\\n- 系统配置下新增个人信息、权限管理；权限管理仅 admin。\\n- 用户、资源、权限三表；启动时按资源 ID 渲染菜单和功能按钮。\\n- 初始化：超级奶妈拥有普通资源；admin 拥有全部资源。`;const blob=new Blob([text],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='用户与权限设计说明.txt';a.click();URL.revokeObjectURL(a.href)});
+const qr=document.getElementById('qr');for(let i=0;i<289;i++){const x=i%17,y=Math.floor(i/17),finder=(x<5&&y<5)||(x>11&&y<5)||(x<5&&y>11);const on=finder?!(x%4===1||y%4===1):((x*13+y*7+i)%5<2);if(on){const cell=document.createElementNS('http://www.w3.org/2000/svg','rect');cell.setAttribute('x',x*10);cell.setAttribute('y',y*10);cell.setAttribute('width','10');cell.setAttribute('height','10');cell.setAttribute('fill','#141413');qr.append(cell)}}applyRole();show('credits');
+</script>
+</body>
+</html>

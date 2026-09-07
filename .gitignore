@@ -8,6 +8,10 @@ dist/
 logs/
 runtime/
 data/
+release/
+.dbg/
+.trae/
+travel-study-electron/
 .DS_Store
 Thumbs.db
 *.log
@@ -20,6 +24,8 @@ Thumbs.db
 *.key
 *credentials*
 *secret*
+!electron/config/redeem-public-key.pem
+.runtime/
 
 # Original media and generated database files
 **/*.mp4

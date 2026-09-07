@@ -63,11 +63,11 @@ async function segmentScenes({ transcript, duration }) {
       messages: [
         {
           role: 'system',
-          content: '你是研学视频结构化分析器。只输出 JSON，不要输出 Markdown。',
+          content: '你是游学视频结构化分析器。只输出 JSON，不要输出 Markdown。',
         },
         {
           role: 'user',
-          content: `请把下面一段中小学研学视频转写拆分成 3 到 8 个连续场景。每个场景必须包含 title、start_sec、end_sec、summary、transcript。start_sec 和 end_sec 是相对于视频开头的秒数，范围 0 到 ${Math.round(duration)}，必须连续且不能重叠。summary 用中文概括可用于研学手册的知识点。输出格式：{"scenes":[{"title":"","start_sec":0,"end_sec":10,"summary":"","transcript":""}]}\n\n转写文本：\n${transcript.slice(0, 24000)}`,
+          content: `请把下面一段中小学游学视频转写拆分成 3 到 8 个连续场景。每个场景必须包含 title、start_sec、end_sec、summary、transcript。start_sec 和 end_sec 是相对于视频开头的秒数，范围 0 到 ${Math.round(duration)}，必须连续且不能重叠。summary 用中文概括可用于游学手册的知识点。输出格式：{"scenes":[{"title":"","start_sec":0,"end_sec":10,"summary":"","transcript":""}]}\n\n转写文本：\n${transcript.slice(0, 24000)}`,
         },
       ],
     }),

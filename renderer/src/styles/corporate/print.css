@@ -1,0 +1,143 @@
+.template-paper.accent-green {
+  --accent: #2d7666;
+}
+
+.template-paper.accent-blue {
+  --accent: #2563eb;
+}
+
+.template-paper.accent-amber {
+  --accent: #b45309;
+}
+
+@media print {
+  html,
+  body,
+  #root,
+  .app-shell,
+  .app-body,
+  main {
+    width: 210mm !important;
+    min-height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .app-body {
+    margin-left: 0 !important;
+  }
+
+  .page-module {
+    min-height: 0;
+    background: #fff;
+  }
+
+  .clip-detail-page {
+    width: 210mm;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .clip-detail-print-pages .template-cornell.print-layout {
+    width: 210mm;
+    min-height: 297mm;
+    height: 297mm;
+    margin: 0;
+    padding: 12mm;
+    display: grid;
+    grid-template-rows: 18mm minmax(0, 1fr) 42mm;
+    gap: 3mm;
+    box-sizing: border-box;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .template-cornell.print-layout .cornell-paper-header {
+    border-bottom-width: .8mm;
+  }
+
+  .template-cornell.print-layout .cornell-kicker {
+    font-size: 9pt;
+  }
+
+  .template-cornell.print-layout .cornell-paper-header h2 {
+    font-size: 22pt;
+  }
+
+  .template-cornell.print-layout .template-page-number {
+    font-size: 10pt;
+  }
+
+  .template-cornell.print-layout .cornell-body {
+    grid-template-columns: 33% minmax(0, 1fr);
+    border-bottom-width: .8mm;
+  }
+
+  .template-cornell.print-layout .cornell-cue-zone {
+    padding: 5mm 5mm 4mm 0;
+    border-right-width: .8mm;
+  }
+
+  .template-cornell.print-layout .cornell-note-zone {
+    padding: 5mm 0 4mm 6mm;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 3mm;
+  }
+
+  .template-cornell.print-layout .cornell-brush-label {
+    min-height: 7mm;
+    padding: 1mm 3mm;
+    font-size: 12pt;
+  }
+
+  .template-cornell.print-layout .cornell-cue-block {
+    margin-top: 6mm;
+  }
+
+  .template-cornell.print-layout .cornell-cue-block h3 {
+    margin-bottom: 2mm;
+    font-size: 12pt;
+  }
+
+  .template-cornell.print-layout .cornell-cue-block p,
+  .template-cornell.print-layout .cornell-transcript p {
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .template-cornell.print-layout .cornell-photo-grid {
+    gap: 2mm;
+  }
+
+  .template-cornell.print-layout .cornell-photo-grid .paper-photo {
+    border-width: 1mm;
+    box-shadow: none;
+  }
+
+  .template-cornell.print-layout .cornell-transcript {
+    padding: 0;
+  }
+
+  .template-cornell.print-layout .cornell-transcript h3 {
+    margin-bottom: 2mm;
+    font-size: 11pt;
+  }
+
+  .template-cornell.print-layout .cornell-summary-zone {
+    padding-top: 3mm;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: transparent;
+  }
+
+  .clip-detail-print-pages .template-cornell.print-layout:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}

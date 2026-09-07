@@ -1,0 +1,86 @@
+{
+  "appId": "com.travelstudy.desktop",
+  "productName": "TravelStudy",
+  "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+  "directories": {
+    "output": "release",
+    "buildResources": "deploy"
+  },
+  "files": [
+    "electron/**/*",
+    "renderer/dist/**/*",
+    "package.json",
+    "node_modules/**/*",
+    "!**/.DS_Store",
+    "!**/*.log",
+    "!**/.gitkeep",
+    "!docs{,/**/*}",
+    "!demo{,/**/*}",
+    "!travel-study-electron{,/**/*}",
+    "!.runtime{,/**/*}",
+    "!resources/initial-data{,/**/*}",
+    "!example{,/**/*}",
+    "!deploy{,/**/*}",
+    "!renderer/src{,/**/*}",
+    "!renderer/public{,/**/*}",
+    "!renderer/node_modules{,/**/*}",
+    "!packages{,/**/*}"
+  ],
+  "extraResources": [
+    {
+      "from": "resources/initial-data",
+      "to": "bootstrap/initial-data"
+    },
+    {
+      "from": "resources/initial-data/travel-study/config/prompts.json",
+      "to": "bootstrap/initial-data/travel-study/config/prompts.json"
+    },
+    {
+      "from": "resources/initial-data/travel-study/config/redeem-public-key.pem",
+      "to": "bootstrap/initial-data/travel-study/config/redeem-public-key.pem"
+    },
+    {
+      "from": "electron/config/prompts.json",
+      "to": "bootstrap/config/prompts.json"
+    },
+    {
+      "from": "electron/config/redeem-public-key.pem",
+      "to": "bootstrap/config/redeem-public-key.pem"
+    }
+  ],
+  "asar": true,
+  "asarUnpack": [
+    "node_modules/@ffmpeg-installer/**/*",
+    "node_modules/ffmpeg-static/**/*",
+    "node_modules/ffprobe-static/**/*"
+  ],
+  "npmRebuild": false,
+  "mac": {
+    "target": [
+      {
+        "target": "pkg",
+        "arch": [
+          "arm64"
+        ]
+      }
+    ],
+    "category": "public.app-category.education",
+    "hardenedRuntime": false
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "shortcutName": "研学笔记"
+  }
+}

@@ -1,0 +1,82 @@
+:root {
+  color-scheme: light;
+
+  --corp-font-body: "Open Sans", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --corp-font-display: "Poppins", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --corp-font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --corp-primary-50: #eff6ff;
+  --corp-primary-100: #dbeafe;
+  --corp-primary-200: #bfdbfe;
+  --corp-primary-500: #3b82f6;
+  --corp-primary-600: #2563eb;
+  --corp-primary-700: #1d4ed8;
+  --corp-primary-900: #1e3a8a;
+
+  --corp-neutral-0: #ffffff;
+  --corp-neutral-25: #fcfcfd;
+  --corp-neutral-50: #f8fafc;
+  --corp-neutral-100: #f1f5f9;
+  --corp-neutral-200: #e2e8f0;
+  --corp-neutral-300: #cbd5e1;
+  --corp-neutral-500: #64748b;
+  --corp-neutral-600: #475569;
+  --corp-neutral-700: #334155;
+  --corp-neutral-800: #1e293b;
+  --corp-neutral-900: #0f172a;
+
+  --corp-success: #16865a;
+  --corp-success-soft: #ecfdf5;
+  --corp-warning: #b45309;
+  --corp-warning-soft: #fffbeb;
+  --corp-danger: #dc2626;
+  --corp-danger-soft: #fef2f2;
+
+  --corp-space-1: 4px;
+  --corp-space-2: 8px;
+  --corp-space-3: 12px;
+  --corp-space-4: 16px;
+  --corp-space-5: 20px;
+  --corp-space-6: 24px;
+  --corp-space-8: 32px;
+  --corp-space-10: 40px;
+  --corp-space-12: 48px;
+
+  --corp-radius-sm: 4px;
+  --corp-radius-md: 6px;
+  --corp-radius-lg: 8px;
+  --corp-shadow-sm: 0 1px 2px rgb(15 23 42 / 5%);
+  --corp-shadow-md: 0 8px 24px rgb(15 23 42 / 8%);
+  --corp-focus: 0 0 0 3px rgb(59 130 246 / 24%);
+
+  --font-ui: var(--corp-font-body);
+  --surface: var(--corp-neutral-0);
+  --surface-subtle: var(--corp-neutral-50);
+  --background: var(--corp-neutral-100);
+  --border: var(--corp-neutral-200);
+  --text: var(--corp-neutral-900);
+  --text-muted: var(--corp-neutral-500);
+  --navy: var(--corp-neutral-900);
+  --forest: var(--corp-primary-700);
+  --forest-2: var(--corp-primary-900);
+  --teal: var(--corp-primary-600);
+  --teal-soft: var(--corp-primary-50);
+  --amber: var(--corp-primary-600);
+  --amber-soft: var(--corp-primary-50);
+  --brick: var(--corp-danger);
+  --ink: var(--corp-neutral-900);
+  --muted: var(--corp-neutral-500);
+  --line: var(--corp-neutral-200);
+  --stage: var(--corp-neutral-100);
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 28px;
+  --text-display: 36px;
+  --radius-xs: var(--corp-radius-sm);
+  --radius-sm: var(--corp-radius-sm);
+  --radius-md: var(--corp-radius-md);
+  --radius-lg: var(--corp-radius-lg);
+}
